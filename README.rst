@@ -9,7 +9,7 @@
     :alt: Downloads
 
 =======================
-JPush API Python Client
+JMesage API Python Client In Development (Moved from jpush-api-python-client)
 =======================
 
 JPush's officially supported Python client library for accessing JPush APIs. 
