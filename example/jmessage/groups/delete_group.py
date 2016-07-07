@@ -1,5 +1,5 @@
-from im import users
-from im import common
+from jmessage import users
+from jmessage import common
 from conf import *
 import time
 
@@ -8,6 +8,6 @@ jmessage=common.JMessage(app_key,master_secret)
 
 groups=jmessage.create_groups()
 
-response=groups.get_groups_list("1","2")
+response=groups.delete_group("10184263")
 time.sleep(2)
 print response

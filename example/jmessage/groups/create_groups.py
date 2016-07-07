@@ -1,5 +1,5 @@
-from im import users
-from im import common
+from jmessage import users
+from jmessage import common
 from conf import *
 import time
 
@@ -16,6 +16,6 @@ print response
 
 '''
 {'members_username': ['xiaohuihui'], 'name': 'jpush', 'owner_username': 'dev_fang', 'desc': 'jpush group'}
-https://api.im.jpush.cn/v1/groups/
+https://api.jmessage.jpush.cn/v1/groups/
 {"gid":10184253,"owner_username":"dev_fang","name":"jpush","desc":"jpush group","members_username":["xiaohuihui"],"level":3}
 '''

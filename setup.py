@@ -8,25 +8,25 @@ except (ImportError):
 
 _version_re = re.compile(r'__version__\s+=\s+(.*)')
 
-with open('jpush/__init__.py', 'rb') as f:
+with open('jmessage/__init__.py', 'rb') as f:
     version = str(ast.literal_eval(_version_re.search(
         f.read().decode('utf-8')).group(1)))
 
 setup(
-    name='jpush',
+    name='jmessage',
     version=version,
-    description='JPush\'s officially supported Python client library',
+    description='JMessage\'s officially supported Python client library',
     keywords=('JPush', 'JPush API', 'Android Push', 'iOS Push',
               'JMessage', 'JMessage API', 'Android IM', 'iOS IM'
     ),
     license='MIT License',
     long_description=open("README.rst", "r").read(),
 
-    url='https://github.com/jpush/jpush-api-python-client',
+    url='https://github.com/jpush/jmessage-api-python-client',
     author='jpush',
     author_email='support@jpush.cn',
 
-    packages=['jpush', 'jpush.push', 'jpush.device', 'jmessage', 'jmessage.core'],
+    packages=['jmessage', 'jmessage.groups', 'jmessage.messages', 'jmessage.users'],
     platforms='any',
     classifiers=[
         'Environment :: Console',

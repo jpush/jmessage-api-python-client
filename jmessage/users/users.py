@@ -1,5 +1,5 @@
-from im import *
-from im import url
+from jmessage import *
+from jmessage import url
 import json
 class User(object):
     def __init__(self,jmessage):
