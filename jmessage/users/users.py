@@ -33,34 +33,34 @@ class User(object):
         return user
 
     def regist_user(self, users):
-         print users
+         #print users
          users = json.dumps(users)
-         print users
+         #print users
          regist_url = url.IM_URL + url.REGIST_USER_URL
-         print regist_url
+         #print regist_url
          response = self.jmessage._request("POST", users, regist_url)
          return response.content
 
     def regist_admin(self, admins):
-        print admins
+        #print admins
         admins = json.dumps(admins)
-        print admins
+        #print admins
         regist_url = url.IM_URL + url.REGIST_ADMIN_URL
-        print regist_url
+        #print regist_url
         response = self.jmessage._request("POST", admins, regist_url)
         return response.content
 
     def get_user_by_username(self,username):
-        print username
+        #print username
         regist_url = url.IM_URL + url.REGIST_USER_URL+username
-        print regist_url
+        #print regist_url
         body=None
         response = self.jmessage._request("GET",body, regist_url)
         return response.content
     def put_user_password(self, username, password):
-        print username
+        #print username
         regist_url = url.IM_URL + url.REGIST_USER_URL+username+"/password"
-        print regist_url
+        #print regist_url
         new_password={}
         new_password["new_password"]=password
         body=json.dumps(new_password)
@@ -68,49 +68,49 @@ class User(object):
         return response
 
     def delete_user_by_username(self, username):
-        print username
+        #print username
         regist_url = url.IM_URL + url.REGIST_USER_URL+username
-        print regist_url
+        #print regist_url
         body=None
         response = self.jmessage._request("DELETE",body,regist_url)
         return response
 
     def blacklist_user_by_username(self, username):
-        print username
+        #print username
         regist_url = url.IM_URL + url.REGIST_USER_URL+username+"/blacklist"
-        print regist_url
+        #print regist_url
         body=None
         response = self.jmessage._request("PUT",body,regist_url)
         return response
 
     def blacklist_user_by_username(self, username):
-        print username
+        #print username
         regist_url = url.IM_URL + url.REGIST_USER_URL+username+"/blacklist"
-        print regist_url
+        #print regist_url
         body=username
         response = self.jmessage._request("PUT",body,regist_url)
         return response
 
 
     def delete_blacklist_by_username(self, username):
-        print username
+        #print username
         regist_url = url.IM_URL + url.REGIST_USER_URL+username+"/blacklist"
-        print regist_url
+        #print regist_url
         body=username
         response = self.jmessage._request("DELETE",body,regist_url)
         return response
 
     def get_blacklist(self, username):
-        print username
+        #print username
         regist_url = url.IM_URL + url.REGIST_USER_URL+username+"/blacklist"
-        print regist_url
+        #print regist_url
         body=username
         response = self.jmessage._request("GET",body,regist_url)
         return response
 
     def get_users(self, start,count):
         regist_url = url.IM_URL + url.REGIST_USER_URL+"?start="+start+"&count="+count
-        print regist_url
+        #print regist_url
         body=None
         response = self.jmessage._request("GET",body,regist_url)
         return response

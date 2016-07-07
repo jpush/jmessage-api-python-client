@@ -27,9 +27,9 @@ class Message(object):
         return message
 
     def send_messages(self, messages):
-         print messages
+         #print messages
          messages = json.dumps(messages)
          messages_url = url.IM_URL + url.MESSAGES_URL
-         print messages_url
+         #print messages_url
          response = self.jmessage._request("POST", messages, messages_url)
          return response.content

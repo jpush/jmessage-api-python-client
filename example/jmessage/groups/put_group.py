@@ -11,4 +11,4 @@ groups=jmessage.create_groups()
 group=groups.build_group(owner_username="dev_fang", name="jpush-put", members_username=["xiaohuihui"], desc="jpush group")
 response=groups.create_group(group)
 time.sleep(2)
-print response
+print (response)

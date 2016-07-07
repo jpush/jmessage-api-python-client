@@ -10,4 +10,4 @@ groups=jmessage.create_groups()
 
 response=groups.get_groups_by_username("xiaohuihui")
 time.sleep(2)
-print response
+print (response)

@@ -26,5 +26,34 @@ jmessage=common.JMessage(app_key,master_secret)
 users=jmessage.create_users()
 user= [users.build_user("user","password")]
 response=users.regist_user(user)
-print response
+print (response)
+```
+
+>以下代码截取自项目目录下的 example/messages/send_message.py
+
+```
+from jmessage import users
+from jmessage import common
+from conf import *
+jmessage=common.JMessage(app_key,master_secret)
+messages=jmessage.create_messages()
+message=messages.build_message(1,"single","admin","text",
+                                "xiaohuihui","admin","Hello, JMessage!")
+response=messages.send_messages(message)
+print (response)
+```
+
+>以下代码截取自项目目录下的 example/groups/create_groups.py
+
+```
+
+from jmessage import users
+from jmessage import common
+from conf import *
+jmessage=common.JMessage(app_key,master_secret)
+groups=jmessage.create_groups()
+group=groups.build_group(owner_username="dev_fang", name="jpush",
+                          members_username=["xiaohuihui"], desc="jpush group")
+response=groups.create_group(group)
+print (response)
 ```

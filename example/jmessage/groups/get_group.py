@@ -10,4 +10,4 @@ groups=jmessage.create_groups()
 
 response=groups.get_group("10184263")
 time.sleep(2)
-print response
+print (response)
