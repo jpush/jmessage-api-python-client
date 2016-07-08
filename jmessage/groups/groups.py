@@ -70,7 +70,7 @@ class Group(object):
 
     def get_groups_by_username(self, username):
         #print username
-        group_url=url.IM_URL+url.REGIST_USER_URL+username+"/groups_test/"
+        group_url=url.IM_URL+url.REGIST_USER_URL+username+"/groups/"
         #print group_url
         body= None
         response = self.jmessage._request("GET", body, group_url)
