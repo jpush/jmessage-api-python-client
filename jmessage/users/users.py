@@ -39,7 +39,7 @@ class User(object):
          regist_url = url.IM_URL + url.REGIST_USER_URL
          #print regist_url
          response = self.jmessage._request("POST", users, regist_url)
-         return response.content
+         return response
 
     def regist_admin(self, admins):
         #print admins
@@ -48,7 +48,7 @@ class User(object):
         regist_url = url.IM_URL + url.REGIST_ADMIN_URL
         #print regist_url
         response = self.jmessage._request("POST", admins, regist_url)
-        return response.content
+        return response
 
     def get_user_by_username(self,username):
         #print username
@@ -56,7 +56,8 @@ class User(object):
         #print regist_url
         body=None
         response = self.jmessage._request("GET",body, regist_url)
-        return response.content
+        return response
+
     def put_user_password(self, username, password):
         #print username
         regist_url = url.IM_URL + url.REGIST_USER_URL+username+"/password"

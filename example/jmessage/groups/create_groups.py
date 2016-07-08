@@ -16,6 +16,6 @@ print (response)
 
 '''
 {'members_username': ['xiaohuihui'], 'name': 'jpush', 'owner_username': 'dev_fang', 'desc': 'jpush group'}
-https://api.jmessage.jpush.cn/v1/groups/
+https://api.jmessage.jpush.cn/v1/groups_test/
 {"gid":10184253,"owner_username":"dev_fang","name":"jpush","desc":"jpush group","members_username":["xiaohuihui"],"level":3}
 '''

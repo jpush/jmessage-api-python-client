@@ -26,7 +26,7 @@ setup(
     author='jpush',
     author_email='support@jpush.cn',
 
-    packages=['jmessage', 'jmessage.groups', 'jmessage.messages', 'jmessage.users'],
+    packages=['jmessage', 'jmessage.groups_test', 'jmessage.messages', 'jmessage.users'],
     platforms='any',
     classifiers=[
         'Environment :: Console',

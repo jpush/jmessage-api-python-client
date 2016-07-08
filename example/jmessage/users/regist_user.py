@@ -5,5 +5,5 @@ jmessage=common.JMessage(app_key,master_secret)
 users=jmessage.create_users()
 user= [users.build_user("user123456","password")]
 response=users.regist_user(user)
-print (response)
+print (dir(response))
 
