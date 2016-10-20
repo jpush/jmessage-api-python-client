@@ -16,7 +16,7 @@ setup(
     name='jmessage',
     version=version,
     description='JMessage\'s officially supported Python client library',
-    keywords=('JPush', 'JPush API', 'Android Push', 'iOS Push',
+    keywords=('JMessage', 'JMessage API', 'Android JMessage', 'iOS JMessage',
               'JMessage', 'JMessage API', 'Android IM', 'iOS IM'
     ),
     license='MIT License',
