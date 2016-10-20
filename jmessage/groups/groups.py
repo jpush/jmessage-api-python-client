@@ -23,7 +23,7 @@ class Group(object):
         #print group_url
         body=json.dumps(group)
         response = self.jmessage._request("POST", body, group_url)
-        return response.content
+        return response
 
     def get_group(self,gid):
         #print gid
@@ -31,7 +31,7 @@ class Group(object):
         #print group_url
         body=None
         response = self.jmessage._request("GET", body, group_url)
-        return response.content
+        return response
 
     def put_group(self,gid,group):
         #print gid
@@ -39,7 +39,7 @@ class Group(object):
         #print group_url
         body=json.dumps(group)
         response = self.jmessage._request("PUT", body, group_url)
-        return response.content
+        return response
 
     def delete_group(self, gid):
         #print gid
@@ -47,7 +47,7 @@ class Group(object):
         #print group_url
         body=None
         response = self.jmessage._request("DELETE", body, group_url)
-        return response.content
+        return response
 
     def put_group_members(self, gid, add , remove=None):
         #print gid
@@ -58,7 +58,7 @@ class Group(object):
         body= json.dumps(members)
         #print body
         response = self.jmessage._request("POST", body, group_url)
-        return response.content
+        return response
 
     def get_group_members(self, gid):
         #print gid
@@ -66,7 +66,7 @@ class Group(object):
         #print group_url
         body= None
         response = self.jmessage._request("GET", body, group_url)
-        return response.content
+        return response
 
     def get_groups_by_username(self, username):
         #print username
@@ -74,14 +74,14 @@ class Group(object):
         #print group_url
         body= None
         response = self.jmessage._request("GET", body, group_url)
-        return response.content
+        return response
 
     def get_groups_list(self, start, count):
         group_url=url.IM_URL+url.GROUPS_URL+"?start="+start+"&count="+count
         #print group_url
         body= None
         response = self.jmessage._request("GET", body, group_url)
-        return response.content
+        return response
 
 
 

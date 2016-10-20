@@ -10,4 +10,4 @@ groups=jmessage.create_groups()
 
 response=groups.get_groups_list("1","2")
 time.sleep(2)
-print (response)
+print (response.content)

@@ -7,4 +7,4 @@ users=jmessage.create_users()
 
 user= {"username": "admin", "password": "passwords"}
 response= users.regist_admin(user)
-print (response)
+print (response.content)

@@ -8,8 +8,8 @@ jmessage=common.JMessage(app_key,master_secret)
 
 groups=jmessage.create_groups()
 
-group=groups.build_group(owner_username="dev_fang", name="jpush", members_username=["xiaohuihui"], desc="jpush group")
+group=groups.build_group(owner_username="dev_fang", name="jmessage", members_username=["xiaohuihui"], desc="jpush group")
 response=groups.create_group(group)
 time.sleep(2)
-print (response)
+print (response.content)
 
