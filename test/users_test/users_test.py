@@ -5,15 +5,41 @@ from conf import *
 import random
 import string
 
-class TestUsers(unittest.TestCase):
-  username = string.join(random.sample(['z', 'y', 'x', 'w', 'v', 'u', 't', 's', 'r', 'q', 'p', 'o', 'n', 'm', 'l', 'k', 'j', 'i', 'h', 'g', 'f', 'e','d', 'c', 'b', 'a'], 8)).replace(' ', '')
-  jmessage = common.JMessage(app_key, master_secret)
-  users = jmessage.create_users()
+import unittest
+from jmessage import users
+from jmessage import common
+from conf import *
+import time
+import json
 
-  def test_user(self):
-      print (self.username)
-      user = [self.users.build_user(self.username, "password")]
-      response = self.users.regist_user(user)
-      print (dir(response))
-      print (response.text)
-      self.assertEqual(response.status_code, 201)
+jmessage=common.JMessage(app_key,master_secret)
+users=jmessage.create_users()
+
+
+class TestUser(unittest.TestCase):
+    def test_create_group(self):
+        user = [users.build_user("user123456", "password")]
+        response = users.regist_user(user)
+        print (response.content)
+        self.assertEqual(response.status_code, 403)
+
+    def test_get_group(self):
+        user = {"username": "admin", "password": "passwords"}
+        response = users.regist_admin(user)
+        print (response.content)
+        self.assertEqual(response.status_code, 403)
+
+    def test_get_group_members(self):
+        response = users.put_user_password("xiaohuihui", "123456")
+        print (response.content)
+        self.assertEqual(response.status_code, 204)
+
+    def test_get_groups_by_username(self):
+        response = users.get_user_by_username("xiaohuihui")
+        print (response.content)
+        self.assertEqual(response.status_code, 200)
+
+
+
+if __name__ == '__main__':
+    unittest.main()
