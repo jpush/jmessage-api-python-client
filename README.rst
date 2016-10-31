@@ -11,5 +11,5 @@ Python 2.7
 
 安装
 
-pip
-pip install jmessage
+python setup.py install
+
