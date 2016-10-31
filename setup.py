@@ -38,6 +38,5 @@ setup(
 
     install_requires=[
         'requests>=1.2',
-        'pycurl>=7.19.5',
     ],
 )
