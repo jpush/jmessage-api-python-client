@@ -11,7 +11,12 @@ Python 2.7
 
 ## 安装
 
-下载之后安装(稍后支持 pip 安装)
+下载之后安装
+```
+python setup.py install 
+```
+
+(稍后支持 pip 安装)
 
 ## 样例
 >以下代码截取自项目目录下的 example/users/regist_user.py
