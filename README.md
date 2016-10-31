@@ -11,7 +11,7 @@ Python 2.7
 
 ## 安装
 
-下载之后安装
+下载之后运行
 ```
 python setup.py install 
 ```
