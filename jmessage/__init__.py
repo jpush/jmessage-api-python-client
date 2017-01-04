@@ -1,11 +1,18 @@
-from .users import *
+from .users import User
 from .common import *
 from .url import *
-from .groups import *
-from .messages import *
-from .groups import *
+from .groups import Group
+from .messages import Message
 
-__version__ = '1.0.1'
+__all__=[
+    User,
+    Group,
+    Message,
+    url,
+    common
+]
+
+__version__ = '1.0.2'
 VERSION = tuple(map(int,  __version__.split('.')))
 
 # Silence urllib3 INFO logging by default
