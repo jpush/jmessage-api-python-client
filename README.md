@@ -11,12 +11,15 @@ Python 2.7
 
 ## 安装
 
+pip 安装
+```
+pip install jmessage
+```
+
 下载之后运行
 ```
 python setup.py install 
 ```
-
-(稍后支持 pip 安装)
 
 ## 样例
 >以下代码截取自项目目录下的 example/users/regist_user.py
