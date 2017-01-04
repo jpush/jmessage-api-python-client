@@ -5,7 +5,7 @@ from .groups import *
 from .messages import *
 from .groups import *
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 VERSION = tuple(map(int,  __version__.split('.')))
 
 # Silence urllib3 INFO logging by default
