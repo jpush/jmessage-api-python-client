@@ -35,26 +35,24 @@ class Room(object):
         resp = self._jmessage.post(Room.URI, data=data)
         return resp
 
-    def update(self, roomid, owner=None, name=None, desc=None):
-        uri = Room.URI + roomid
-        data = {}
-        if owner:
-            data['owner_username'] = owner
-        if name:
-            data['name'] = name
-        if desc:
-            data['description'] = desc
-
+    def update(self, roomid, *, owner, name, desc):
+        uri = Room.URI + str(roomid)
+        data = {
+            'owner_username': owner,
+            'name': name,
+            'description': desc
+        }
         resp = self._jmessage.put(uri, data=data)
         return resp
 
     def delete(self, roomid):
-        uri = Room.URI + roomid
-        resp = self._jmessage.post(uri)
+        headers = { 'content-type': 'application/json; charset=utf-8' }
+        uri = Room.URI + str(roomid)
+        resp = self._jmessage.delete(uri, headers=headers)
         return resp
 
     def members(self, roomid, count, start=0):
-        uri = Room.URI + roomid + '/members'
+        uri = Room.URI + str(roomid) + '/members'
         params = {
             'start': start,
             'count': count
@@ -63,14 +61,14 @@ class Room(object):
         return resp
 
     def add_members(self, roomid, members):
-        uri = Room.URI + roomid + '/members'
+        uri = Room.URI + str(roomid) + '/members'
         if not isinstance(members, list):
             members = [members]
         resp = self._jmessage.put(uri, data=members)
         return resp
 
     def remove_members(self, roomid, members):
-        uri = Room.URI + roomid + '/members'
+        uri = Room.URI + str(roomid) + '/members'
         if not isinstance(members, list):
             members = [members]
         resp = self._jmessage.delete(uri, data=members)
@@ -85,6 +83,7 @@ class Room(object):
         return self._forbidden(roomid, username, params)
 
     def _forbidden(self, roomid, username, params):
-        uri = Room.URI + roomid + '/forbidden/' + username
-        resp = self._jmessage.put(uri, params=params)
+        headers = { 'content-type': 'application/json; charset=utf-8' }
+        uri = Room.URI + str(roomid) + '/forbidden/' + username
+        resp = self._jmessage.put(uri, params=params, headers=headers)
         return resp

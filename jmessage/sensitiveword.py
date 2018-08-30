@@ -21,7 +21,7 @@ class SensitiveWord(object):
         resp = self._jmessage.post(SensitiveWord.URI, data=words)
         return resp
 
-    def change(self, old, new):
+    def change(self, *, old, new):
         data = {
             'new_word': new,
             'old_word': old
@@ -45,8 +45,9 @@ class SensitiveWord(object):
     def close(self):
         return self._status(0)
 
-    def _status(Self, status)
+    def _status(self, status):
+        headers = { 'content-type': 'application/json; charset=utf-8' }
         uri = SensitiveWord.URI + 'status'
         params = { 'status': status }
-        resp = self._jmessage.put(uri, params=params)
+        resp = self._jmessage.put(uri, params=params, headers=headers)
         return resp

@@ -16,20 +16,19 @@ class Group(object):
         return resp
 
     def get(self, gid):
-        uri = Group.URI + gid
+        uri = Group.URI + str(gid)
         resp = self._jmessage.get(uri)
         return resp
 
     def delete(self, gid):
-        uri = Group.URI + gid
-        resp = self._jmessage.delete(uri)
+        headers = { 'content-type': 'application/json; charset=utf-8' }
+        uri = Group.URI + str(gid)
+        resp = self._jmessage.delete(uri, headers=headers)
         return resp
 
     def update_owner(self, gid, username, appkey=None):
-        uri = Group.URI + 'owner/'+ gid
-        data = {
-            'username': username
-        }
+        uri = Group.URI + 'owner/'+ str(gid)
+        data = { 'username': username }
         if appkey:
             data['appkey'] = appkey
         resp = self._jmessage.put(uri)
@@ -55,7 +54,7 @@ class Group(object):
         return resp
 
     def update(self, gid, name=None, avatar=None, desc=None):
-        uri = Group.URI + gid
+        uri = Group.URI + str(gid)
         data = {}
         if name:
             data['name'] = name
@@ -64,12 +63,12 @@ class Group(object):
         if desc:
             data['desc'] = desc
 
-        resp = self._jmessage.put(Group.URI, data=data)
+        resp = self._jmessage.put(uri, data=data)
         return resp
 
 
     def members(self, gid):
-        uri = Group.URI + gid + '/members'
+        uri = Group.URI + str(gid) + '/members'
         resp = self._jmessage.get(uri)
         return resp
 
@@ -86,7 +85,7 @@ class Group(object):
         return self._update_members(gid, data)
 
     def _update_members(self, gid, data):
-        uri = Group.URI + gid + '/members'
+        uri = Group.URI + str(gid) + '/members'
         resp = self._jmessage.post(uri, data=data)
         return resp
 
@@ -102,6 +101,6 @@ class Group(object):
     def _silence(self, gid, params, data):
         if not isinstance(data, list):
             data = [data]
-        uri = Group.URI + 'messages/'+ gid + '/silence'
+        uri = Group.URI + 'messages/'+ str(gid) + '/silence'
         resp = self._jmessage.put(uri, params=params, data=data)
         return resp

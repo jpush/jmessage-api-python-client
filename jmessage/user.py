@@ -141,9 +141,7 @@ class User(object):
         return resp
 
     def update_friend(self, username, friendname, remark=None, others=None):
-        data = {
-            'username': friendname
-        }
+        data = { 'username': friendname }
         if remark:
             data['note_name'] = remark
         if others:

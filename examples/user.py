@@ -1,11 +1,12 @@
-from pprint import pprint
 from context import jmessage
+from im import parser
 from jmessage.user import User
 
 client = User(jmessage)
 
 user = 'user_x'
 admin = 'admin_x'
+gid = 111111
 users = [
     { 'username': 'uuu0', 'password': 'passwd' },
     { 'username': 'uuu1', 'password': 'passwd' },
@@ -13,13 +14,6 @@ users = [
     { 'username': 'uuu3', 'password': 'passwd' }
 ]
 usernames = [ 'uuu0', 'uuu1', 'uuu2', 'uuu3']
-
-def parser(resp):
-    pprint(resp.status_code)
-    pprint(resp.headers)
-    if resp.status_code != 204:
-        pprint(resp.json())
-
 
 
 # # 注册用户
@@ -96,8 +90,59 @@ def parser(resp):
 # # 激活用户
 # resp = client.active(user)
 
+
 # # 获取用户的群组列表
 # resp = client.groups(user)
+
+# # 添加群消息屏蔽
+# resp = client.add_groups_shield(user, gid)
+
+# # 移除群消息屏蔽
+# resp = client.remove_groups_shield(user, gid)
+
+# # 批量添加群消息屏蔽
+# resp = client.add_groups_shield(user, [gid])
+
+# # 批量移除群消息屏蔽
+# resp = client.remove_groups_shield(user, [gid])
+
+
+# # 获取好友列表
+# resp = client.friends(user)
+
+# # 添加好友
+# resp = client.add_friends(user, 'uuu0')
+
+# # 删除好友
+# resp = client.remove_friends(user, 'uuu0')
+
+# # 批量添加好友
+# resp = client.add_friends(user, usernames)
+
+# # 批量删除好友
+# resp = client.remove_friends(user, usernames)
+
+# # 更新好友备注
+# resp = client.update_friend(user, 'uuu0', remark='remark')
+
+# # 批量更新好友备注
+# data = [
+#     {
+#         'username': 'uuu0',
+#         'note_name': 'new note name',
+#     }, {
+#         'username': 'uuu1'
+#         'note_name': 'new note name',
+#     }, {
+#         'username': 'uuu2'
+#         'note_name': 'new note name',
+#     }, {
+#         'username': 'uuu3'
+#         'note_name': 'new note name',
+#     }
+# ]
+# resp = client.update_friends(user, data)
+
 
 # # 获取用户聊天室列表
 # resp = client.chatrooms(user)
