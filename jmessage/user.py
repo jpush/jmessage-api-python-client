@@ -7,7 +7,9 @@ class User(object):
         self._jmessage = jmessage
 
     def all(self, count, start=0, admin=False):
-        uri = User.ADMIN_URI if admin else User.URI
+        uri = User.URI
+        if isinstance(admin, bool) and admin:
+            uri = User.ADMIN_URI
         if count > 500:
             count = 500
         params = {
@@ -52,11 +54,13 @@ class User(object):
     def delete(self, usernames):
         uri = User.URI
         data = None
+        headers = None
         if isinstance(usernames, list):
             data = usernames
         else:
             uri = User.URI + usernames
-        resp = self._jmessage.delete(uri, data=data)
+            headers = { 'content-type': 'application/json; charset=utf-8' }
+        resp = self._jmessage.delete(uri, data=data, headers=headers)
         return resp
 
     def create(self, username, password,
@@ -85,7 +89,9 @@ class User(object):
         return self.register(data, admin=admin)
 
     def register(self, users, admin=False):
-        uri = User.ADMIN_URI if admin else User.URI
+        uri = User.URI
+        if isinstance(admin, bool) and admin:
+            uri = User.ADMIN_URI
         if not isinstance(users, list):
             users = [users]
         resp = self._jmessage.post(uri, data=users)
@@ -234,7 +240,8 @@ class User(object):
         return self._forbidden(username, False)
 
     def _forbidden(self, username, forbidden):
+        headers = { 'content-type': 'application/json; charset=utf-8' }
         uri = User.URI + username + '/forbidden'
         params = { 'disable': forbidden }
-        resp = self._jmessage.put(uri, params=params)
+        resp = self._jmessage.put(uri, params=params, headers=headers)
         return resp
