@@ -6,8 +6,12 @@ class Message(object):
         self._jmessage = jmessage
 
     def retract(self, username, msgid):
-        uri = Message.URI + username + '/' + msgid + '/retract'
-        resp = self._jmessage.post(uri)
+        uri = Message.URI + username + '/' + str(msgid) + '/retract'
+        data = {
+            'username': username,
+            'msgid': msgid
+        }
+        resp = self._jmessage.post(uri, data=data)
         return resp
 
     def send(self, msg):
@@ -31,19 +35,23 @@ class Model(object):
             msg_body['extras'] = extras
         self.data['msg_body'] = msg_body
         self.data['msg_type'] = 'text'
+        return self
 
     def image(self, images):
         self.data['msg_body'] = images
         self.data['msg_type'] = 'image'
+        return self
 
     def voice(self, voices):
         self.data['msg_body'] = voices
         self.data['msg_type'] = 'voice'
+        return self
 
     def custom(self, content):
         if content is dict:
             self.data['msg_body'] = content
         self.data['msg_type'] = 'custom'
+        return self
 
     def set_target(self, id, type, name=None, appkey=None):
         self.data['target_id'] = id
@@ -53,12 +61,14 @@ class Model(object):
             self.data['target_name'] = name
         if appkey:
             self.data['target_appkey'] = appkey
+        return self
 
     def set_from(self, id, type, name=None):
         self.data['from_id'] = id
         self.data['from_type'] = type
         if name:
             self.data['from_name'] = name
+        return self
 
     def notification(self, title=None, alert=None):
         notification = {}
@@ -67,13 +77,16 @@ class Model(object):
         if alert:
             notification['alert'] = alert
         self.data['notification'] = notification
+        return self
 
     def notifiable(self, boo=True):
         '''boo=True 表示在通知栏展示'''
         '''no_notification 消息是否在通知栏展示 true 或者 false，默认为 false，表示在通知栏展示'''
         self.data['no_notification'] = not boo
+        return self
 
     def offline(self, boo=True):
         '''boo=True 表示需要离线存储'''
         '''no_offline 消息是否离线存储 true 或者 false，默认为 false，表示需要离线存储'''
         self.data['no_offline'] = not boo
+        return self

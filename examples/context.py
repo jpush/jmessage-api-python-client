@@ -9,3 +9,5 @@ from config import app_key, master_secret
 from jmessage import JMessage
 
 jmessage = JMessage(app_key, master_secret)
+
+img_path = os.path.join(BASE, 'jiguang.png')
