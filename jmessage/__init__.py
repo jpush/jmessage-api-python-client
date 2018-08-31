@@ -15,8 +15,12 @@ class JMessage(object):
     def post(self, uri, params=None, data=None, files=None):
         return self._session.post(uri, params=params, json=data, files=files)
 
-    def put(self, uri, params=None, data=None, headers=None):
+    def put(self, uri, params=None, data=None):
+        if data is None:
+            headers = { 'content-type': 'application/json; charset=utf-8' }
         return self._session.put(uri, params=params, json=data, headers=headers)
 
-    def delete(self, uri, params=None, data=None, headers=None):
+    def delete(self, uri, params=None, data=None):
+        if data is None:
+            headers = { 'content-type': 'application/json; charset=utf-8' }
         return self._session.delete(uri, params=params, json=data, headers=headers)

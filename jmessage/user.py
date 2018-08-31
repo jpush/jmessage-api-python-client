@@ -54,13 +54,11 @@ class User(object):
     def delete(self, usernames):
         uri = User.URI
         data = None
-        headers = None
         if isinstance(usernames, list):
             data = usernames
         else:
             uri = User.URI + usernames
-            headers = { 'content-type': 'application/json; charset=utf-8' }
-        resp = self._jmessage.delete(uri, data=data, headers=headers)
+        resp = self._jmessage.delete(uri, data=data)
         return resp
 
     def create(self, username, password,
@@ -238,8 +236,7 @@ class User(object):
         return self._forbidden(username, False)
 
     def _forbidden(self, username, forbidden):
-        headers = { 'content-type': 'application/json; charset=utf-8' }
         uri = User.URI + username + '/forbidden'
         params = { 'disable': forbidden }
-        resp = self._jmessage.put(uri, params=params, headers=headers)
+        resp = self._jmessage.put(uri, params=params)
         return resp

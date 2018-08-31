@@ -1,8 +1,7 @@
 from pprint import pprint
 from context import jmessage, img_path
-from jmessage.sensitiveword import SensitiveWord
-from jmessage.resource import Resource
-from jmessage.message import Message, Model as MM
+from jmessage.im import IM
+from jmessage.message import Resource, Message, Model as MM
 
 def parser(resp):
     pprint(resp.status_code)
@@ -12,31 +11,44 @@ def parser(resp):
 
 username = 'user_x'
 
-sw = SensitiveWord(jmessage)
+im = IM(jmessage)
 
 # # 获取敏感词列表
-# resp = sw.all(10)
+# resp = im.all_words(10)
 
 # # 添加敏感词
-# resp = sw.add('hi')
+# resp = im.add_words('hi')
 
 # # 批量添加敏感词
-# resp = sw.add(['hi', 'hola'])
+# resp = im.add_words(['hi', 'hola'])
 
 # # 修改敏感词
-# resp = sw.change(old='hi', new='hello')
+# resp = im.change_word(old='hi', new='hello')
 
 # # 删除敏感词
-# resp = sw.remove('hi')
+# resp = im.remove_word('hi')
 
 # # 获取敏感词功能状态
-# resp = sw.status()
+# resp = im.word_status()
 
 # # 开启敏感词过滤
-# resp = sw.open()
+# resp = im.open_filter()
 
 # # 关闭敏感词过滤
-# resp = sw.close()
+# resp = im.close_filer()
+
+
+
+# # 获得 SDK-API 用户注册开关
+# resp = im.sdk_status()
+
+# # 打开 SDK-API 用户注册
+# resp = im.open_sdk()
+
+# # 关闭SDK-API用户注册
+# resp = im.close_sdk()
+
+
 
 # res = Resource(jmessage)
 # msg = Message(jmessage)

@@ -21,9 +21,8 @@ class Group(object):
         return resp
 
     def delete(self, gid):
-        headers = { 'content-type': 'application/json; charset=utf-8' }
         uri = Group.URI + str(gid)
-        resp = self._jmessage.delete(uri, headers=headers)
+        resp = self._jmessage.delete(uri)
         return resp
 
     def update_owner(self, gid, username, appkey=None):

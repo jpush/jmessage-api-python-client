@@ -46,9 +46,8 @@ class Room(object):
         return resp
 
     def delete(self, roomid):
-        headers = { 'content-type': 'application/json; charset=utf-8' }
         uri = Room.URI + str(roomid)
-        resp = self._jmessage.delete(uri, headers=headers)
+        resp = self._jmessage.delete(uri)
         return resp
 
     def members(self, roomid, count, start=0):
@@ -83,7 +82,6 @@ class Room(object):
         return self._forbidden(roomid, username, params)
 
     def _forbidden(self, roomid, username, params):
-        headers = { 'content-type': 'application/json; charset=utf-8' }
         uri = Room.URI + str(roomid) + '/forbidden/' + username
-        resp = self._jmessage.put(uri, params=params, headers=headers)
+        resp = self._jmessage.put(uri, params=params)
         return resp
