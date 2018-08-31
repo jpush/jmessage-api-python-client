@@ -1,5 +1,5 @@
 from context import jmessage
-from im import parser
+from utils import parser
 from jmessage.user import User
 
 client = User(jmessage)
